@@ -9,5 +9,9 @@ public class SnakeAndLadder {
         //VARIABLES
         int player1 = START_POSITION;
         int newPosition = 0;
+
+        //ROLLING_DIE
+           int rollDie = 1 + (int)(Math.random() * 6);
+            System.out.println("Dice: " +rollDie);
     }
 }
