@@ -11,6 +11,7 @@ public class SnakeAndLadder {
      static void dieRoll() {
         //VARIABLES
         int newPosition = 0;
+        int prevPosition;
 
         while (newPosition < WINNING_POSITION) {
             int rollDie = 1 + (int) (Math.random() * 6);
@@ -19,12 +20,17 @@ public class SnakeAndLadder {
             switch (optionCheck) {
                 case 1:
                     //NO PLAY
+                    prevPosition = newPosition;
                     newPosition = newPosition;
                     break;
 
                 case 2:
                     //LADDER
+                    prevPosition = newPosition;
                     newPosition = newPosition + rollDie;
+                    if ( newPosition > WINNING_POSITION ) {
+                        newPosition = prevPosition;
+                    }
                     break;
 
                 case 3:
