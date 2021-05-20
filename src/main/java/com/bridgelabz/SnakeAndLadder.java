@@ -2,40 +2,45 @@ package com.bridgelabz;
 
 
 public class SnakeAndLadder {
-    public static void main(String[] args) {
-        System.out.println("Welcome To Snakes And Ladder Simulation");
-        //CONSTANTS
-        int START_POSITION = 0;
+    //CONSTANTS
+    static final int START_POSITION = 0;
+    static final int WINNING_POSITION = 100;
 
+
+    //ROLLING_DIE
+     static void dieRoll() {
         //VARIABLES
         int newPosition = 0;
 
-        //ROLLING_DIE
-           int rollDie = 1 + (int)(Math.random() * 6);
-            System.out.println("Dice: " +rollDie);
-        //OPTIONS
-        int optionCheck = 1 + (int)(Math.random() * 3);
+        while (newPosition < WINNING_POSITION) {
+            int rollDie = 1 + (int) (Math.random() * 6);
+            //OPTIONS
+            int optionCheck = 1 + (int) (Math.random() * 3);
             switch (optionCheck) {
                 case 1:
-                    System.out.println("No Play");
-                    newPosition = START_POSITION;
+                    //NO PLAY
+                    newPosition = newPosition;
                     break;
 
                 case 2:
+                    //LADDER
                     newPosition = newPosition + rollDie;
-                    System.out.println("Ladder");
                     break;
 
                 case 3:
-                    if (rollDie > newPosition) {
-                        newPosition = newPosition;
-                    }
-                    else {
+                    //SNAKE
                         newPosition = newPosition - rollDie;
+                    if (newPosition < 0) {
+                        newPosition = 0;
                     }
-                    System.out.println("Snakes");
-                    break;
+                        break;
             }
-                    System.out.println("New Position: " + newPosition);
+        }
+        System.out.println("New Position: " + newPosition);
+    }
+    public static void main(String[] args) {
+        System.out.println("Welcome To Snakes And Ladder Simulation");
+        dieRoll();
+
     }
 }
