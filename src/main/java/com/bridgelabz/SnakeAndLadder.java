@@ -6,12 +6,12 @@ public class SnakeAndLadder {
     static final int START_POSITION = 0;
     static final int WINNING_POSITION = 100;
 
-
-    //ROLLING_DIE
+    //ROLLING_DIE_COMPUTATION
      static void dieRoll() {
         //VARIABLES
         int newPosition = 0;
         int prevPosition;
+        int dieRollCount = 0;
 
         while (newPosition < WINNING_POSITION) {
             int rollDie = 1 + (int) (Math.random() * 6);
@@ -41,8 +41,10 @@ public class SnakeAndLadder {
                     }
                         break;
             }
+            dieRollCount++;
+            System.out.println("New Position: " + newPosition);
         }
-        System.out.println("New Position: " + newPosition);
+         System.out.println("Total die roll: " + dieRollCount);
     }
     public static void main(String[] args) {
         System.out.println("Welcome To Snakes And Ladder Simulation");
